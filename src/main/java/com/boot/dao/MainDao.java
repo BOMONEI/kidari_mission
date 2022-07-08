@@ -1,4 +1,4 @@
-package com.boot.kidari.dao;
+package com.boot.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 

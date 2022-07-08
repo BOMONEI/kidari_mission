@@ -1,4 +1,4 @@
-package com.boot.kidari;
+package com.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

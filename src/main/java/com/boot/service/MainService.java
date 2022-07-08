@@ -1,4 +1,4 @@
-package com.boot.kidari.service;
+package com.boot.service;
 
 import org.springframework.stereotype.Service;
 

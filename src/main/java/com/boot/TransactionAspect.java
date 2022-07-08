@@ -1,4 +1,4 @@
-package com.boot.kidari;
+package com.boot;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +20,7 @@ public class TransactionAspect {
 	@Autowired
 	private PlatformTransactionManager transactionManager;
 
-	private static final String EXPRESSION = "execution(* com.boot.kidari..service.*.*(..))";
+	private static final String EXPRESSION = "execution(* com.boot..service.*.*(..))";
 
 	@SuppressWarnings("deprecation")
 	@Bean

@@ -1,4 +1,4 @@
-package com.boot.kidari;
+package com.boot;
 
 import javax.sql.DataSource;
 
@@ -42,7 +42,7 @@ public class DatabaseConfiguration {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource());
 		factoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/*Mapper.xml"));
-		factoryBean.setTypeAliasesPackage("com.kps.dao");
+		factoryBean.setTypeAliasesPackage("com.boot.kidari.dao");
 		factoryBean.setConfiguration(mybatisConfg());
 		return factoryBean.getObject();
 	}
