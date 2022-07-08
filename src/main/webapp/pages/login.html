@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>KIDARI 강연예약시스템</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var loginAction = function(memberCode){
+		$.ajax({
+			url: '/loginAction',
+			type: 'POST',
+			data: {
+				memberCode: memberCode
+			},
+			success: function(value){
+				if(value){
+					alert(memberCode);
+				} else {
+					alert('no member');
+				}
+			},
+			error: function(e){
+				console.log(e);
+				alert('err');
+			}
+		})
+	}
+	
+	$('#loginBtn').click(function(){
+		loginAction($('#memberCode').val());
+	})
+})
+</script>
+<body>
+	<div>
+		Login Page
+		<input id="memberCode" type="number" />
+		<button id="loginBtn">로그인</button>
+	</div>
+</body>
+</html>

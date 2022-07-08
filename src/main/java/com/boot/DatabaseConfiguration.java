@@ -42,7 +42,7 @@ public class DatabaseConfiguration {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource());
 		factoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/*Mapper.xml"));
-		factoryBean.setTypeAliasesPackage("com.boot.kidari.dao");
+		factoryBean.setTypeAliasesPackage("com.boot.dao");
 		factoryBean.setConfiguration(mybatisConfg());
 		return factoryBean.getObject();
 	}

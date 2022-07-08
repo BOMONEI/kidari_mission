@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.boot.kidari.dao.MainDao">
+<mapper namespace="com.boot.dao.MainDao">
 
 <!-- Query Start -->
-	
+	<select id="getMemberFlag" resultType="Integer">
+	/** mainMapper, getMemberFlag, 2022-07-08, 회원 존재여부, param: memberCode, return: int, author: jsh */
+		SELECT 	
+				COUNT(MEMBER_CODE)
+		FROM 	
+				MB_MEMBER
+		WHERE 	
+				MEMBER_CODE = #{memberCode}
+	</select>
 </mapper>
