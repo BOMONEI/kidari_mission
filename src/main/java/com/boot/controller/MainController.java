@@ -1,46 +1,42 @@
+/**
+ * 
+ */
 package com.boot.controller;
 
-import java.util.Base64;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.boot.service.MainService;
+import com.boot.vo.LectureVO;
 
+/**
+
+ * @FileName : MainController.java
+ * @Date : 2022. 7. 9. 
+ * @Author : jsh
+ * @Description :
+ */
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/main")
 public class MainController {
 	
 	@Autowired
 	private MainService mainService;
 	
-	@GetMapping("/login")
-	public String loginPage() {
-		return "login";
-	}
-	
-	@PostMapping("/loginAction") // 로그인 처리는 POST 형태로 Request
-	@ResponseBody
-	public boolean loginAction(String memberCode, HttpSession session) {
-		int userFlag = mainService.getMemberFlag(memberCode);
-		if(userFlag > 0) {
-			session.setAttribute("memberCode", memberCode);
-			session.setMaxInactiveInterval(1200); // 20분 session 유지 
-			return true; 
-		} else {
-			return false;
-		}
-	}
-	
-	@GetMapping("/logout")
-	public String userLogout(HttpSession session) {
-		session.invalidate(); // 유저 세션정보 삭제 
-		return "redirect: /login";
+	@GetMapping("/mainPage")
+	public String mainPage(String memberCode, Model model) {
+		List<LectureVO> list = new ArrayList<LectureVO>();
+		//list = 
+		list = mainService.selectNowLectureInfo();
+		System.out.println(list);
+		model.addAttribute("lectureList", list);
+		return "mainPage";
 	}
 }
+

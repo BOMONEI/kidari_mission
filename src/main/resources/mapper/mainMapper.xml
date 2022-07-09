@@ -3,13 +3,16 @@
 <mapper namespace="com.boot.dao.MainDao">
 
 <!-- Query Start -->
-	<select id="getMemberFlag" resultType="Integer">
-	/** mainMapper, getMemberFlag, 2022-07-08, 회원 존재여부, param: memberCode, return: int, author: jsh */
-		SELECT 	
-				COUNT(MEMBER_CODE)
-		FROM 	
-				MB_MEMBER
-		WHERE 	
-				MEMBER_CODE = #{memberCode}
+	<select id="selectNowLectureInfo" resultType="com.boot.vo.LectureVO">
+		SELECT 
+				LECTURE_NO
+				, LECTURE_NAME
+				, LECTURE_MEMBER_NAME
+				, LECTURE_DTTM
+				, LECTURE_MEMBER_LIMIT
+		FROM 
+				TB_LECTURE
+		WHERE
+				LECTURE_DTTM BETWEEN DATE_ADD(NOW(), INTERVAL -7 DAY) AND DATE_ADD(NOW(), INTERVAL 1 DAY) 
 	</select>
 </mapper>
